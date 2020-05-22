@@ -1,0 +1,11 @@
+AlexaHomePage:
+    desc: alexa主页
+    locators:
+        - name: Skills
+          by: id
+          value: iApps
+
+        - name: YourSkills
+          by:  xpath
+          value: //*[text()='Your Skills']
+

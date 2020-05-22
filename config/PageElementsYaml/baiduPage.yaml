@@ -1,0 +1,15 @@
+SearchPage:
+    desc: 搜索
+    locators:
+
+        - name: 百度搜索框
+          by: id
+          value: kw
+
+        - name: 百度一下按钮
+          by: id
+          value: su
+
+        - name: 百度一下
+          by: class
+          value: bg s_btn

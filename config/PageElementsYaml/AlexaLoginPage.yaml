@@ -1,0 +1,15 @@
+AmazonAlexaLoginPage:
+    desc: 登录
+    locators:
+
+        - name: 用户名输入框
+          by: id
+          value: ap_email
+
+        - name: 密码输入框
+          by: id
+          value: ap_password
+
+        - name: sign-in按钮
+          by: id
+          value: signInSubmit

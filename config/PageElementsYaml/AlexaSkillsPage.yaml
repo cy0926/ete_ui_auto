@@ -1,0 +1,43 @@
+AlexaSkillsPage:
+    desc: skills页面
+    locators:
+
+        - name: DEV_SKILLS
+          by: id
+          value: your-skills-tab-dev
+
+        - name: vesync_testOnline
+          by: xpath
+          value:  //*[text()='vesync_testOnline']
+
+        - name: vesync_pre_deploy_english_en
+          by: xpath
+          value: //*[text()='vesync_pre_deploy_english_en']
+
+        - name: enable按钮
+          by: id
+          value: a2s-enable-skill-button
+
+        - name: disable按钮
+          by: id
+          value: a2s-disable-skill-button
+
+        - name: 是否绑定的文案提示
+          by: xpath
+          value: //*[@class='account-link-info']
+
+        - name: 关闭弹框
+          by: xpath
+          value: //*[@class='svg-icon svg-close a2s-dismiss-modal-icon']
+
+        - name: discover_devices_button
+          by: xpath
+          value: //*[@class='a2s-button button type-action']
+
+        - name: discover_button
+          by: id
+          value: connected-home-discover-button
+
+        - name: remove_all_button
+          by: id
+          value: connected-home-forget-all-button

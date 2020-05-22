@@ -1,0 +1,19 @@
+LoginPage:
+    desc: 登录
+    locators:
+
+        - name: 用户名输入框
+          by: id
+          value: username
+
+        - name: 密码输入框
+          by: id
+          value: password
+
+        - name: 授权按钮
+          by: xpath
+          value: //*[@class='submit-btn']
+
+        - name: 授权成功的文案
+          by: xpath
+          value: //*[@class='success']
