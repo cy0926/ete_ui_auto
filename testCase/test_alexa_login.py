@@ -1,7 +1,5 @@
 import unittest
 
-from selenium.webdriver import ActionChains
-
 from pageObjects.AlexaLoginPage import AlexaLoginPage
 from pageObjects.AlexaHomePage import AlexaHomePage
 from pageObjects.AlexaSkillsPage import AlexaSkillsPage
@@ -11,9 +9,8 @@ from config.getDriver import get_driver
 import time
 from common.logger import Log
 
-"""
-user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36
-"""
+
+
 """
 思路：
 1、登录alexa，点击skills--yourSkills
@@ -21,11 +18,10 @@ user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,
 3、点击vesync_testOnline，如果状态是已绑定，先解绑
 4、然后再操作绑定的流程
 
-todo:
-1、支持多语言；
-2、环境配置
 """
 
+
+# todo: 1、支持多语言； 2、环境配置
 
 class TestAlexaLogin(unittest.TestCase):
     def setUp(self):
@@ -38,8 +34,8 @@ class TestAlexaLogin(unittest.TestCase):
         self.AlexaHomePage = AlexaHomePage(self.driver)
         self.AlexaSkillsPage = AlexaSkillsPage(self.driver)
         self.VesyncLoginPage = VesyncLoginPage(self.driver)
-        self.alexa_username = read_cfg.get_username('alexa_nana')
-        self.alexa_password = read_cfg.get_password('alexa_nana')
+        self.alexa_username = read_cfg.get_username('alexa_cy')
+        self.alexa_password = read_cfg.get_password('alexa_cy')
         self.vesync_username = read_cfg.get_username('vesync_cy')
         self.vesync_password = read_cfg.get_password('vesync_cy')
 
@@ -61,15 +57,8 @@ class TestAlexaLogin(unittest.TestCase):
         # 授权成功之后，要切换句柄回到alexa页面继续操作
         self.driver.switch_to.window(handles[0])
         time.sleep(2)
-        # 关闭弹框
-        self.AlexaSkillsPage.click_clone_button()
-
-        # self.AlexaSkillsPage.click_discover_devices_button()
-        # time.sleep(50)
-        # self.AlexaSkillsPage.discover_button()
-
-        # self.AlexaHomePage.action()
-        # self.AlexaSkillsPage.click_vesync_testonline_action()
+        # 刷新绑定页面
+        self.driver.refresh()
         time.sleep(2)
         try:
             if self.AlexaSkillsPage.status_text() == 'Disabling this skill will unlink your account':
@@ -82,7 +71,7 @@ class TestAlexaLogin(unittest.TestCase):
     def test_alexa_bind_vesync(self):
         self.AlexaLoginPage.action(username=self.alexa_username,
                                    password=self.alexa_password)
-        time.sleep(5)
+        # time.sleep(5)
         self.AlexaHomePage.action()
 
         self.AlexaSkillsPage.click_vesync_testonline_action()

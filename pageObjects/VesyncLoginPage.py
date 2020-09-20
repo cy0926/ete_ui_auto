@@ -25,8 +25,6 @@ class VesyncLoginPage(BasePage):
 
     def action(self, username, password):
         self.username_input(username)
-        time.sleep(2)
         self.password_input(password)
-        time.sleep(2)
         self.click_authorize()
         time.sleep(3)

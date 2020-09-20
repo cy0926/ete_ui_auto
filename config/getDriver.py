@@ -2,16 +2,14 @@ from selenium import webdriver
 
 
 def get_driver():
-    driver = webdriver.Chrome()
-    # driver = webdriver.Firefox()
-    # driver_path = r'D:\driver\chromedriver.exe'  # 这是chrome驱动路径
-    # chromeOptions = webdriver.ChromeOptions()
-    # chromeOptions.add_argument('user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, '
-    #                            'like Gecko) Chrome/81.0.4044.138 Safari/537.36"')
-    # driver = webdriver.Chrome(executable_path=driver_path,
-    #                           chrome_options=chromeOptions)
-    # print(driver.page_source)
-    # # 获取请求头信息
-    # agent = driver.execute_script("return navigator.userAgent")
-    # print(agent)  # 查看请求头是否更改。
+    # driver = webdriver.Chrome() # 默认是有界面
+
+    # 无头浏览器运行设置
+    option = webdriver.ChromeOptions()
+    option.add_argument("--window-size=1920,1080")
+    option.add_argument("--start-maximized")
+    option.add_argument("--headless")  # 浏览器不提供可视化页面
+    option.add_argument('--log-level=3')
+    driver = webdriver.Chrome(chrome_options=option)
+
     return driver

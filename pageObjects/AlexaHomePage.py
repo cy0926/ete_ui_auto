@@ -1,9 +1,11 @@
 from common.base import BasePage
+from common.logger import Log
 from config.ReadPageYmal import get_locator
 import time
 
 
 class AlexaHomePage(BasePage):
+    log = Log()
     yaml_file, page = "AlexaHomePage.yaml", "AlexaHomePage"
 
     loc1 = get_locator(yaml_file, page, "Skills")
@@ -19,8 +21,8 @@ class AlexaHomePage(BasePage):
         self.click(self.loc2)
 
     def action(self):
-        time.sleep(3)
+        self.log.info("登录成功，进入首页")
         self.click_skills()
-        time.sleep(3)
+        self.log.info("点击了skill")
         self.click_you_skills()
-        time.sleep(2)
+        self.log.info("点击了your skill")

@@ -2,8 +2,8 @@ AlexaHomePage:
     desc: alexa主页
     locators:
         - name: Skills
-          by: id
-          value: iApps
+          by: xpath
+          value: //*[@id="iApps"]
 
         - name: YourSkills
           by:  xpath

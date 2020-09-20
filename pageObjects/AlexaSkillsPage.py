@@ -8,6 +8,7 @@ class AlexaSkillsPage(BasePage):
 
     loc1 = get_locator(yaml_file, page, "DEV_SKILLS")
     loc2 = get_locator(yaml_file, page, "vesync_testOnline")
+    loc2_1 = get_locator(yaml_file, page, "")
     loc3 = get_locator(yaml_file, page, "vesync_pre_deploy_english_en")
     loc4 = get_locator(yaml_file, page, "是否绑定的文案提示")
     loc5 = get_locator(yaml_file, page, "enable按钮")
@@ -49,7 +50,9 @@ class AlexaSkillsPage(BasePage):
         self.click(self.loc9)
 
     def click_vesync_testonline_action(self):
-        time.sleep(1)
         self.click_dev_skills()
-        time.sleep(2)
         self.click_vesync_test_online()
+
+    def click_vesync_pred_action(self):
+        self.click_dev_skills()
+        self.click_vesync_pre_deploy_english_en()

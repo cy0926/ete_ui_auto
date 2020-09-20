@@ -7,9 +7,13 @@ SearchPage:
           value: kw
 
         - name: 百度一下按钮
-          by: id
-          value: su
+          by: xpath
+          value: //*[@id="su"]
 
         - name: 百度一下
           by: class
           value: bg s_btn
+
+        - name: 第一条结果
+          by: xpath
+          value: //*[@id="1"]/h3

@@ -1,9 +1,11 @@
 from common.base import BasePage
+from common.logger import Log
 from config.ReadPageYmal import get_locator
 import time
 
 
 class AlexaLoginPage(BasePage):
+    log = Log()
     yaml_file, page = "AlexaLoginPage.yaml", "AmazonAlexaLoginPage"
 
     loc1 = get_locator(yaml_file, page, "用户名输入框")
@@ -21,8 +23,9 @@ class AlexaLoginPage(BasePage):
 
     def action(self, username, password):
         self.username_input(username)
-        time.sleep(2)
+        self.log.info("输入用户名")
         self.password_input(password)
-        time.sleep(2)
+        self.log.info("输入密码")
+        self.log.info("准备点击登录")
         self.click_sign_in()
-        time.sleep(10)
+        self.log.info("点击登录了")

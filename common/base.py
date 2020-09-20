@@ -28,6 +28,14 @@ class BasePage(object):
         self.driver.maximize_window()
         self.driver.get(url)
 
+    def find_element_clickable(self, locator, timeout=60):
+        """定位元素，参数locator是元祖类型
+            判断元素是否是可点击的
+        """
+        loc = (locator["by"], locator["value"])  # 元祖
+        element = WebDriverWait(self.driver, timeout, 1).until(EC.element_to_be_clickable(loc))
+        return element
+
     def find_element(self, locator, timeout=60):
         """定位元素，参数locator是元祖类型"""
         loc = (locator["by"], locator["value"])  # 元祖
@@ -42,7 +50,8 @@ class BasePage(object):
 
     def click(self, locator):
         """点击操作"""
-        element = self.find_element(locator)
+        # element = self.find_element(locator)
+        element = self.find_element_clickable(locator)
         element.click()
 
     def send_keys(self, locator, text, is_clear=True):
